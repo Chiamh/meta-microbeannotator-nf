@@ -24,6 +24,7 @@ process EXTRACT_MGX {
 	
 	filterbyname.sh in=${pangene_seqs} out=${sample_id}_merged_pangene_hits.fa names=${sample_id}_merged_pangene_IDs ignorejunk=t include=t
 	
+	cat ${sample_id}_merged_pangene_hits.fa ${sample_id}_merged_uniref90_hits.fa > ${sample_id}_mgx_proteins.fa
 	
 	"""
 }
