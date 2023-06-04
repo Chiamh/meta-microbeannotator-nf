@@ -36,7 +36,7 @@ def helpMessage() {
       --mgx_protein_seqs                   For the annotate workflow only: Path to a folder containing all input protein sequences from metagenomes (this will be recursively searched for *fa/*faa/*fasta files)
     Database arguments:
       --pangene_seqs                Path to the folder with protein sequences from pangenomes of choice
-      --uniref_seqs			        Path to the folder with protein sequences from Uniref90
+      --uniref90_seqs			        Path to the folder with protein sequences from Uniref90
       --microbeannotator_db			Path to the folder with the microbeannotator database
     Workflow options:
       --process_rna                 Turns on steps to process metatranscriptomes [Default: true].
