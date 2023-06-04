@@ -107,8 +107,11 @@ if (params.process_dna && params.mgx_annotations){
 ========================================================================================
 */
 
-include { EXTRACT_ANNOT_MGX } from '../modules/extract_and_annot_mgx.nf'
-include { EXTRACT_ANNOT_MTX } from '../modules/extract_and_annot_mtx.nf'
+include { EXTRACT_MGX } from '../modules/extract_mgx.nf'
+include { EXTRACT_MTX } from '../modules/extract_mtx.nf'
+include { ANNOT_MTX } from '../modules/annot_mtx.nf'
+include { ANNOT_MGX } from '../modules/annot_mgx.nf'
+
 
 /*
 ========================================================================================
@@ -123,19 +126,20 @@ include { EXTRACT_ANNOT_MTX } from '../modules/extract_and_annot_mtx.nf'
 workflow FULL {
     if ( params.process_rna ){
 	
-		EXTRACT_ANNOT_MTX(params.microbeannotator_db,
-						  params.pangene_seqs,
-						  params.uniref90_seqs,
-						  ch_mtx_input)
+		EXTRACT_MTX(params.pangene_seqs,
+					params.uniref90_seqs,
+					ch_mtx_input)
 		
+		ANNOT_MTX(params.microbeannotator_db, EXTRACT_MTX.out.seqs)
 	}
     
     if ( params.process_dna ){
         
-		EXTRACT_ANNOT_MGX(params.microbeannotator_db,
-						  params.pangene_seqs,
-						  params.uniref90_seqs,
-						  ch_mgx_input)
+		EXTRACT_MGX(params.pangene_seqs,
+					params.uniref90_seqs,
+					ch_mgx_input)
+					
+		ANNOT_MGX(params.microbeannotator_db, EXTRACT_MGX.out.seqs)
 
 }
 }
