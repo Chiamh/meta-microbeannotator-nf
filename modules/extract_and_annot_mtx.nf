@@ -22,9 +22,7 @@ process EXTRACT_ANNOT_MTX {
 	script:
 	"""
 	
-	awk '(NR>1){print $1}' "${sample_id}_merged_panalign_annot.tsv" > "${sample_id}_merged_pangene_IDs"
-	
-	awk -F "\t" '(NR>1){print $5}' "${sample_id}_merged_transl-search_annot.tsv" > "${sample_id}_merged_uniref90_IDs"
+	extract_and_annot_helper.sh "${sample_id}"
 	
 	filterbyname.sh in=${uniref90_seqs} out=${sample_id}_merged_uniref90_hits.fa names=${sample_id}_merged_uniref90_IDs ignorejunk=t include=t
 	
