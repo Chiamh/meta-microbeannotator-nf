@@ -57,10 +57,9 @@ OR
 
 5. (B): Run the pipeline with only microbeannotator, on protein fasta files. (annotate workflow)
 
-Further usage
-
 	```
 	nextflow run ./meta-microbeannotator-nf/main.nf -profile docker,your_profile -entry annotate --mtx_annotations /path/to/mtx_protein_fastas --mgx_annotations /path/to/mgx_protein_fastas --outdir /path/to/results
+
 
 	```
 
