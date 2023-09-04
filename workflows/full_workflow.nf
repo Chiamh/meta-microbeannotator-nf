@@ -91,13 +91,13 @@ if (!params.microbeannotator_db){
 */
 
 if (params.process_rna && params.mtx_annotations){
-    Channel.fromFilePairs( [params.mtx_annotations + '/**{_merged_panalign_annot.tsv,_merged_transl-search_annot.tsv}'], checkIfExists:true, size: 2 )
+    Channel.fromFilePairs( [params.mtx_annotations + '/**{_panalign_annot.tsv,_transl-search_annot.tsv}'], checkIfExists:true, size: 2 )
 	.set{ ch_mtx_input }
 }
 
 
 if (params.process_dna && params.mgx_annotations){
-    Channel.fromFilePairs( [params.mgx_annotations + '/**{_merged_panalign_annot.tsv,_merged_transl-search_annot.tsv}'], checkIfExists:true, size: 2 )
+    Channel.fromFilePairs( [params.mgx_annotations + '/**{_panalign_annot.tsv,_transl-search_annot.tsv}'], checkIfExists:true, size: 2 )
 	.set{ ch_mgx_input }
 }
 
